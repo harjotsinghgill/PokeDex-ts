@@ -127,20 +127,15 @@ import ImgContainer from './PokeImgContainer';
 import { NextPoke, PrevPoke } from './PokeNavButtons';
 
 const PokeData: React.FC = () => {
-	// const defaultValue = {};
 	const [loading, setLoading] = useState<boolean>(true);
 	const { id } = useParams();
 	const dispatch: any = useDispatch();
 	const pokeData = useSelector((state: RootState) => state.pokeData?.data);
-	// const error = useSelector((state: RootState) => state.pokeData?.error);
-	// const pokeData = defaultValue;
 
 	useEffect(() => {
 		// setLoading(true);
 
 		dispatch(fetchPokeData(id));
-
-		// console.log(dispatch(fetchPokeData(id)));
 	}, [dispatch, id]);
 
 	const types = pokeData?.types;

@@ -34,7 +34,6 @@ const pokeDataSlice = createSlice({
 				state.loading = false;
 				state.error = null;
 				console.log(state.data);
-				
 			})
 			.addCase(fetchPokeData.rejected, (state, action) => {
 				state.loading = false;
