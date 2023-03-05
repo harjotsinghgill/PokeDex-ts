@@ -3,11 +3,10 @@ import { Card, CardContent, Button } from '@mui/material';
 const PokeCard = styled(Card)(
 	({ theme }) => `
 	transition: transform 0.s ease-in-out;
-    
 	padding: 12px;
 	justify-content: space-between;
 	align-items: center;
-	border-radius: ${theme.shape.borderRadius};
+	border-radius: 8px;
 	:hover{
 		box-shadow:${theme.shadows[9]};
 		z-index:${theme.zIndex.modal};

@@ -53,7 +53,7 @@ const MyBody = styled(Body)();
 const App: React.FC = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Paper className='App' sx={{ backgroundImage: `url(${backdrop})` }}>
+			<Paper className='App' sx={{ backgroundImage: `url(${backdrop})`,backgroundSize: 'contain' }}>
 				<Topbar />
 				<Routes>
 					<Route path='/' element={<MyBody />} />
