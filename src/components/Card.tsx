@@ -35,7 +35,7 @@ const MyCard: React.FC<CardProps> = ({ pokemon }) => {
 								image={item.sprites.other?.['official-artwork'].front_default ?? ''}
 								sx={{
 									backgroundImage: `url(${bg})`,
-									bgcolor: '#f2f2f2',
+									bgcolor: '#e8e8ffee',
 									borderRadius: 4,
 									p: 0,
 								}}

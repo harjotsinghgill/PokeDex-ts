@@ -37,7 +37,7 @@ const Body: React.FC = () => {
 				<MyCard pokemon={pokeData} />
 			</Grid>
 			{loading ? (
-				<Box textAlign={'center'} sx={{ width: '100%' }}>
+				<Box textAlign={'center'} sx={{ width: '100%', height:'55.6px' }}>
 					<Typography variant='h6'>Loading...</Typography>
 				</Box>
 			) : (

@@ -1,12 +1,13 @@
-import { Backdrop, Container, createTheme, Paper, styled, ThemeProvider } from '@mui/material';
+import { createTheme, Paper, styled, ThemeProvider } from '@mui/material';
+import { blue } from '@mui/material/colors';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import './App.scss';
+import backdrop from './assets/backdrop.jpg';
 import Body from './components/Body';
 import PokeData from './components/PokeData';
+import ScrollButton from './components/ScrollToTop';
 import Topbar from './components/TopBar';
-import backdrop from './assets/backdrop.jpg';
-import { blue } from '@mui/material/colors';
-import './App.scss';
 
 const theme = createTheme({
 	palette: {
@@ -53,12 +54,13 @@ const MyBody = styled(Body)();
 const App: React.FC = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Paper className='App' sx={{ backgroundImage: `url(${backdrop})`,backgroundSize: 'contain' }}>
+			<Paper className='App' sx={{ backgroundImage: `url(${backdrop})`, backgroundSize: 'contain' }}>
 				<Topbar />
 				<Routes>
 					<Route path='/' element={<MyBody />} />
 					<Route path='/pokemon/:id' element={<PokeData />} />
 				</Routes>
+				<ScrollButton />
 			</Paper>
 		</ThemeProvider>
 	);

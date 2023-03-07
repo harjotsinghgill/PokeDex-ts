@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../App/store';
 
 const PokeTypesSection = styled(Box)(({ theme }) => `box-sizing:border-box; background:${theme.palette.primary.main}20; border-radius:4px; width:100%;`);
-const PokeType = styled(Box)(({ theme }) => `border-radius:4px; width:min-content;align-items:center; display:flex;`);
+const PokeType = styled(Box)(({ theme }) => `border-radius:4px; ; width:min-content;align-items:center; display:flex;`);
 const PokeTypeTitle = styled(Typography)(({ theme }) => `font-weight:700; white-space:nowrap; `);
 const PokeTypes: React.FC = () => {
 	const types = useSelector((state: RootState) => state.pokeData?.data?.types);

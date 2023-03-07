@@ -114,8 +114,7 @@
 
 // export default PokeData;
 
-import { Box, capitalize, Grid, Paper, Stack, styled, Typography } from '@mui/material';
-import { Container } from '@mui/system';
+import { Box, Grid, Paper, styled } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -123,15 +122,19 @@ import { useParams } from 'react-router-dom';
 import { RootState } from '../App/store';
 import { fetchPokeData } from '../features/pokeDataSlice';
 import PokeInfo from './PokeDataComponents/PokeInfo';
+import PokeName from './PokeDataComponents/PokeName';
 
-import ImgContainer from './PokeImgContainer';
+import ImgContainer from './PokeDataComponents/PokeImgContainer';
 import { NextPoke, PrevPoke } from './PokeNavButtons';
 
 const PokePaper = styled(Paper)(
 	({ theme }) => `background-color:transparent;
     margin:8px 0;
+	padding:16px;
     background: #ababab40;
-    backdrop-filter: saturate(180%) blur(5px);`,
+	background: linear-gradient(to top, ${theme.palette.success.light}80 20%, #F38C3A00 100%);
+    backdrop-filter: saturate(180%) blur(5px);
+	// height:100%`,
 );
 
 const PokeData: React.FC = () => {
@@ -142,45 +145,45 @@ const PokeData: React.FC = () => {
 
 	useEffect(() => {
 		setLoading(true);
-
 		dispatch(fetchPokeData(id));
 	}, [dispatch, id]);
 
 	return (
-		<Box height={'calc(100vh - 70px)'} display={'flex'} justifyContent={'center'} flexDirection={'column'}>
-			{pokeData && (
-				<PokePaper
-					sx={{
-						// bgcolor: '#e0e0e0',
-						// height: '100%',
-						padding: 2,
-					}}
-				>
-					{' '}
-					<Box>
-						<Typography variant='h1' color='initial'>
-							{pokeData && capitalize(pokeData.name)}
-						</Typography>
-					</Box>
-					<Grid container>
-						<Grid item xs={6} sx={{}}>
-							<ImgContainer
-								onLoad={() => {
-									setLoading(false);
-								}}
-								loading={loading}
-								url={pokeData?.sprites?.other?.['official-artwork'].front_default ?? ''}
-							/>
+		<Box height={'calc(100vh - 70px)'} display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+			<PrevPoke />
+			<Box
+				display={'flex'}
+				justifyContent={'center'}
+				sx={{
+					boxSizing: 'border-box',
+				}}
+				height={'100%'}
+				maxWidth={'1080px'}
+				flexDirection={'column'}
+			>
+				{pokeData && (
+					<PokePaper
+						sx={{
+							padding: 2,
+						}}
+					>
+						<PokeName />
+						<Grid container direction={'row'}>
+							<Grid item xs display={'flex'} alignItems={'center'} justifyContent={'center'} width={'100%'}>
+								<ImgContainer
+									onLoad={() => {
+										setLoading(false);
+									}}
+									loading={loading}
+									url={pokeData?.sprites?.other?.['official-artwork'].front_default ?? ''}
+								/>
+							</Grid>
+							{pokeData && <PokeInfo />}
 						</Grid>
-						{pokeData && <PokeInfo />}
-					</Grid>
-					<Stack direction={'row'} spacing={2}>
-						<PrevPoke />
-
-						<NextPoke />
-					</Stack>
-				</PokePaper>
-			)}
+					</PokePaper>
+				)}
+			</Box>
+			<NextPoke />
 		</Box>
 	);
 };

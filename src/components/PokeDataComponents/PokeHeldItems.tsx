@@ -25,7 +25,7 @@ const PokeHeldItems: React.FC = () => {
 	return (
 		<>
 			{heldItems.length!==0 && (
-				<HeldItemsSection width={'100%'} py={1} my={1}>
+				<HeldItemsSection width={'100%'} py={1} mt={1}>
 					<Typography variant='h6' ml={1} fontWeight={700}>
 						Held Items
 					</Typography>

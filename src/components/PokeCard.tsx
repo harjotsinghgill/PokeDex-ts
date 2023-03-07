@@ -7,6 +7,9 @@ const PokeCard = styled(Card)(
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 8px;
+	background-color:transparent;
+    background: linear-gradient(to bottom, ${theme.palette.primary.light}80 40%, #F38C3A00 90%);
+    backdrop-filter: saturate(180%) blur(5px);
 	:hover{
 		box-shadow:${theme.shadows[9]};
 		z-index:${theme.zIndex.modal};
